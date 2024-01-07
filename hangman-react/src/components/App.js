@@ -8,12 +8,39 @@ import { Keyboard } from "./Keyboard";
 function App() {
   const MAX_TRIALS = 6;
   const words = ["xenophobia", "bandy", "jiggles", "hello", "orange", "red", "book"];
+  const [buttons, setButtons] = useState([
+    { letter: 'A', disabled: false },
+    { letter: 'B', disabled: false },
+    { letter: 'C', disabled: false },
+    { letter: 'D', disabled: false },
+    { letter: 'E', disabled: false },
+    { letter: 'F', disabled: false },
+    { letter: 'G', disabled: false },
+    { letter: 'H', disabled: false },
+    { letter: 'I', disabled: false },
+    { letter: 'J', disabled: false },
+    { letter: 'K', disabled: false },
+    { letter: 'L', disabled: false },
+    { letter: 'M', disabled: false },
+    { letter: 'N', disabled: false },
+    { letter: 'O', disabled: false },
+    { letter: 'P', disabled: false },
+    { letter: 'Q', disabled: false },
+    { letter: 'R', disabled: false },
+    { letter: 'S', disabled: false },
+    { letter: 'T', disabled: false },
+    { letter: 'U', disabled: false },
+    { letter: 'V', disabled: false },
+    { letter: 'W', disabled: false },
+    { letter: 'X', disabled: false },
+    { letter: 'Y', disabled: false },
+    { letter: 'Z', disabled: false }
+  ])
   const [secretWordArray, setSecretWordArray] = useState([]);
   const [blanks, setBlanks] = useState([]);
   const [letterGuessed, setLetterGuessed] = useState("")
   const [trials, setTrials] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
-  const [buttonsDisabled, setButtonsDisabled] = useState(false);
   const [hintUsed, setHintUsed] = useState(false);
   const [showNewWordButton, setShowNewWordButton] = useState(false);
   const [showHintButton, setShowHintButton] = useState(false);
@@ -24,13 +51,15 @@ function App() {
     const wordArray = (words[Math.floor(Math.random() * words.length)]).split("");
     const blanksArray = Array(wordArray.length).fill("_");
 
+    setButtons((prev) =>
+      prev.map((el) => ({ ...el, disabled: false }))
+    );
     setShowNewWordButton(false);
     setShowHintButton(false);
     setSecretWordArray(wordArray);
     setBlanks(blanksArray);
     setImageIndex(0);
-    setTrials(MAX_TRIALS);
-    setButtonsDisabled(false);    
+    setTrials(MAX_TRIALS);   
     setHintUsed(false);
     setGameFinish(false);
     setGameResult("");
@@ -62,15 +91,13 @@ function App() {
     }
   }
 
-  const play = (event) => {
+  const play = (letter) => {
     if (gameFinish) return;
-        
-    const BUTTON = event.target;
-    const LETTER = BUTTON.getAttribute("data-value");
+
+    const LETTER = letter.toLowerCase();        
     const IS_GOOD_GUESS = guessAndUpdateBlanks(LETTER);
 
     replaceGuessedLetters(IS_GOOD_GUESS, LETTER);
-    BUTTON.classList.add("disabled");
 
     if (((trials - 1) === 1) && !hintUsed) {
       setShowHintButton(true);
@@ -100,7 +127,7 @@ function App() {
       <Header />
       <GameStage image_index={ imageIndex } initialize_game={ initializeGame } show_new_word_button={ showNewWordButton } show_hint_button={ showHintButton }/>
       <CurrentWord blanks={ blanks } letter_guessed={ letterGuessed } game_result={ gameResult } />
-      <Keyboard play={ play } buttons_disabled={ buttonsDisabled } />
+      <Keyboard play={ play } buttons={ buttons } set_buttons={ setButtons } game_finish={ gameFinish } />
     </>
   );
 }

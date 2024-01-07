@@ -5,7 +5,11 @@ export const CurrentWord = ({ blanks, letter_guessed, game_result }) => {
         <span
           key={index}
           className={
-            (letter === letter_guessed) || game_result === "win" ? "correct" : ""
+            letter === letter_guessed || game_result === "win"
+              ? "correct"
+              : game_result === "lose"
+              ? "incorrect"
+              : ""
           }
         >
           {letter}
