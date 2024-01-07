@@ -12,6 +12,10 @@ h1 {
   text-align: center;
 }
 
+span {
+  margin-right: 5px;
+}
+
 .game-stage {
   min-height: 350px;
   max-height: 350px;
@@ -20,7 +24,7 @@ h1 {
   justify-content: center;
 }
 
-.game-current-word {
+.current-word {
   min-height: 50px;
   max-height: 50px;
   display: flex;
@@ -69,7 +73,10 @@ h1 {
 .new-word-button {
   width: 40px;
   font-size: 12px;
-  visibility: hidden;
+}
+
+.hidden {
+  visibility: hidden
 }
 
 .disabled {
