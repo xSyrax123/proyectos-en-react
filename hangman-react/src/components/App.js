@@ -81,13 +81,12 @@ function App() {
     return isGoodGuess;
   }
 
-  const replaceGuessedLetters = (isGoodGuess, letter) => {
+  const replaceGuessedLetters = (isGoodGuess, letter, updated_trials) => {
     if (isGoodGuess) {
       setLetterGuessed(letter);
     } else {
-      const UPDATED_TRIALS = trials - 1;
-      setTrials(UPDATED_TRIALS);
-      setImageIndex(MAX_TRIALS - UPDATED_TRIALS);
+      setTrials(updated_trials);
+      setImageIndex(MAX_TRIALS - updated_trials);
     }
   }
 
@@ -96,10 +95,11 @@ function App() {
 
     const LETTER = letter.toLowerCase();        
     const IS_GOOD_GUESS = guessAndUpdateBlanks(LETTER);
+    const UPDATED_TRIALS = IS_GOOD_GUESS ? trials : trials - 1;
 
-    replaceGuessedLetters(IS_GOOD_GUESS, LETTER);
+    replaceGuessedLetters(IS_GOOD_GUESS, LETTER, UPDATED_TRIALS);
 
-    if (((trials - 1) === 1) && !hintUsed) {
+    if ((UPDATED_TRIALS === 1) && !hintUsed) {
       setShowHintButton(true);
     }
 
@@ -110,7 +110,10 @@ function App() {
       setShowHintButton(false);
     }
 
-    if (!(trials - 1)) {
+    if (!(UPDATED_TRIALS)) {
+      const BLANKS = secretWordArray;
+      setLetterGuessed("");
+      setBlanks(BLANKS);
       setGameFinish(true);
       setGameResult("lose");
       setShowNewWordButton(true);
