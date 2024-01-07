@@ -79,7 +79,7 @@ function App() {
     setBlanks(blanksArray);
 
     return isGoodGuess;
-  }
+  };
 
   const replaceGuessedLetters = (isGoodGuess, letter, updated_trials) => {
     if (isGoodGuess) {
@@ -88,7 +88,36 @@ function App() {
       setTrials(updated_trials);
       setImageIndex(MAX_TRIALS - updated_trials);
     }
-  }
+  };
+
+  const hint = () => {
+    setShowHintButton(false);
+    setHintUsed(true);
+
+    const MAX_LETTERS_TO_SHOW = Math.floor(Math.random() * 6) + 1;
+    const INDEXES = [];
+  
+    while (INDEXES.length < MAX_LETTERS_TO_SHOW) {
+      const RANDOM_INDEX = Math.floor(Math.random() * buttons.length);
+      const BUTTON = buttons[RANDOM_INDEX];
+      const LETTER = BUTTON.letter.toLowerCase();
+  
+      if (
+        !INDEXES.includes(RANDOM_INDEX) &&
+        !BUTTON.disabled &&
+        !secretWordArray.includes(LETTER)
+      ) {
+        console.log(!BUTTON.disabled)
+        setButtons((prevButtons) =>
+          prevButtons.map((btn) =>
+            btn.letter === LETTER.toUpperCase() ? { ...btn, disabled: true } : btn
+          )
+        );
+
+        INDEXES.push(RANDOM_INDEX);
+      }
+    }
+  };
 
   const play = (letter) => {
     if (gameFinish) return;
@@ -119,7 +148,7 @@ function App() {
       setShowNewWordButton(true);
       setShowHintButton(false);
     }
-  }
+  };
   
   useEffect(() => {
     initializeGame();
@@ -128,7 +157,7 @@ function App() {
   return (
     <>
       <Header />
-      <GameStage image_index={ imageIndex } initialize_game={ initializeGame } show_new_word_button={ showNewWordButton } show_hint_button={ showHintButton }/>
+      <GameStage image_index={ imageIndex } initialize_game={ initializeGame } show_new_word_button={ showNewWordButton } show_hint_button={ showHintButton } hint={ hint }/>
       <CurrentWord blanks={ blanks } letter_guessed={ letterGuessed } game_result={ gameResult } />
       <Keyboard play={ play } buttons={ buttons } set_buttons={ setButtons } game_finish={ gameFinish } />
     </>
