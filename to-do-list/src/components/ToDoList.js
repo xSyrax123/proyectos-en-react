@@ -17,11 +17,12 @@ export const ToDoList = () => {
   };
 
   const completeTask = (index) => {
-    setTasks((prevTasks) => {
-      const UPDATED_TASKS = [...prevTasks];
-      UPDATED_TASKS[index].completed = !UPDATED_TASKS[index].completed;
-      return UPDATED_TASKS;
-    });
+    setTasks((prevTasks) => prevTasks.map((el, i) => {
+      if (index === i) {
+        return { ...el, completed: !el.completed };
+      }
+      return el;
+    }));
   };
 
   const removeTask = (event, index) => {
