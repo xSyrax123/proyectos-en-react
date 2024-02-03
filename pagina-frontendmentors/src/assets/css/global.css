@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Jost*", sans-serif;
+  overflow-y: scroll;
+  min-height: 100vh;
+}
+
+.App {
+  display: flex;
+  background-color: #f2f4ff;
+  gap: 2rem;
+  padding: 3.5rem 26rem;
+}
+
+h1 {
+  font-size: 20px;
+}
+
+.btn {
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+}
+
+.tag {
+  background-color: #f2f4ff;
+  border-radius: 10px;
+  color: #4661e6;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 15px;
+  margin: 5px 7px;
+}
+
+.tag:hover {
+  background-color: #cfd7ff;
+}
+
+.active_tag {
+  background-color: #4661e6;
+  color: #fff;
+}
+
+.suggestions_container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.add_feedback {
+  background-color: #ad1fea;
+  color: #f2f4ff;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 25px;
+  text-decoration: none;
+}
+
+.add_feedback:hover {
+  background-color: #bc57e7;
+}
+
+.cancel {
+  background-color: #3a4374;
+  color: #f2f4ff;
+  font-size: 14px;
+  height: 44px;
+  padding: 0 25px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.cancel:hover {
+  background-color: #6972af;
+}

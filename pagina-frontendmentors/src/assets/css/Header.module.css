@@ -1,0 +1,41 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  background-color: #373f68;
+  border-radius: 0.625rem;
+  padding: 0.875rem 0.75rem 0.875rem 1.5rem;
+  width: 100%;
+}
+
+.number_suggestions_and_sort {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.number_suggestions {
+  color: #fff;
+  font-weight: bold;
+}
+
+.sort_options {
+  display: flex;
+  align-items: center;
+}
+
+.sort_label {
+  padding-right: 0.25rem;
+  font-size: 13px;
+  color: #fff;
+}
+
+.sort_select {
+  appearance: none;
+  border: 0px;
+  background-color: #373f68;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: bold;
+}

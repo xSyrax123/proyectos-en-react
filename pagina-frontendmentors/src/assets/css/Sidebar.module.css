@@ -1,0 +1,95 @@
+.sidebar_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 21.5rem;
+  height: 900px;
+}
+
+.frontend_mentor_banner {
+  background: radial-gradient(
+    128.88% 128.88% at 103.9% -10.39%,
+    #e84d70 0,
+    #a337f6 53.09%,
+    #28a7ed 100%
+  );
+  border-radius: 0.625rem;
+  color: #fff;
+  padding: 1.5rem;
+  height: 8.55rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.frontend_mentor_banner p {
+  font-size: 15px;
+}
+
+.tags_container {
+  background-color: #fff;
+  border-radius: 0.625rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.roadmap_container {
+  background-color: #fff;
+  border-radius: 0.625rem;
+  padding: 1.5rem;
+}
+
+.roadmap_title_and_link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.roadmap_title {
+  color: #3a4374;
+  font-size: 18px;
+}
+
+.roadmap_link {
+  color: #4661e6;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.roadmap_li {
+  list-style: none;
+  list-style-position: inside;
+  color: #647196;
+  font-size: 16px;
+  position: relative;
+}
+
+.roadmap_li::before {
+  content: "\2022";
+  font-weight: 900;
+  font-size: 20px;
+  display: inline-block;
+  width: 1em;
+}
+
+.planned_dot::before {
+  color: #f49f85;
+}
+
+.in_progress_dot::before {
+  color: #ad1fea;
+}
+
+.live_dot::before {
+  color: #62bcfa;
+}
+
+.roadmap_li span {
+  font-size: 18px;
+  font-weight: bold;
+  position: absolute;
+  right: 0px;
+  font-weight: 700;
+}
