@@ -11,10 +11,12 @@ export const AddFeedback = () => {
     description: "",
     comments: []
   }
-
-  console.log(newSuggestion)
   
   const handleAddFeedback = (e) => {
+    e.preventDefault();
+    const datos = new FormData(e.target);
+    const datosCompletos = Object.fromEntries(datos);
+    console.log(datosCompletos)
   }
 
   return (
@@ -37,7 +39,7 @@ export const AddFeedback = () => {
           </svg>
           Go Back
         </Link>
-        <form class={modalStyles.create_new_feedback}>
+        <form action="" class={modalStyles.create_new_feedback} onSubmit={(e) => handleAddFeedback(e)}>
           <svg xmlns="http://www.w3.org/2000/svg" className={modalStyles.form_icon}>
             <defs>
               <radialGradient
