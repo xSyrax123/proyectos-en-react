@@ -1,22 +1,23 @@
 import modalStyles from "../assets/css/AddFeedback.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const AddFeedback = () => {
-  const newSuggestion = {
-    id: 0,
-    title: "",
-    category: "",
-    upvotes: 0,
-    status: "suggestion",
-    description: "",
-    comments: []
-  }
+  const navigate = useNavigate(); 
   
   const handleAddFeedback = (e) => {
     e.preventDefault();
-    const datos = new FormData(e.target);
-    const datosCompletos = Object.fromEntries(datos);
-    console.log(datosCompletos)
+
+    const formData = new FormData(e.target);
+    const formDataObject = Object.fromEntries(formData.entries());
+    const newSuggestion = {
+      ...formDataObject,
+      id: 0,
+      upvotes: 0,
+      status: "suggestion",
+      comments: []
+    }
+
+    navigate('/')  
   }
 
   return (
@@ -39,7 +40,7 @@ export const AddFeedback = () => {
           </svg>
           Go Back
         </Link>
-        <form action="" class={modalStyles.create_new_feedback} onSubmit={(e) => handleAddFeedback(e)}>
+        <form class={modalStyles.create_new_feedback} onSubmit={(e) => handleAddFeedback(e)}>
           <svg xmlns="http://www.w3.org/2000/svg" className={modalStyles.form_icon}>
             <defs>
               <radialGradient
@@ -68,12 +69,12 @@ export const AddFeedback = () => {
           <div className={modalStyles.fb_container}>
             <label>Feedback Title</label>
             <p>Add a short, descriptive headline</p>
-            <input type="text" />
+            <input type="text" name="title" />
           </div>
           <div className={modalStyles.fb_container}>
             <label>Category</label>
             <p>Choose a category for your feedback</p>
-            <select>
+            <select name="category">
               <option>Feature</option>
               <option>UI</option>
               <option>UX</option>
@@ -87,7 +88,7 @@ export const AddFeedback = () => {
               Include any specific comments on what should be improved, added,
               etc.
             </p>
-            <textarea className={modalStyles.fb_detail_input} onClick={(e) => newSuggestion.description = e.target.value}></textarea>
+            <textarea name="description" className={modalStyles.fb_detail_input}></textarea>
           </div>
           <div className={modalStyles.form_buttons}>
             <Link to="/" className="btn cancel">
