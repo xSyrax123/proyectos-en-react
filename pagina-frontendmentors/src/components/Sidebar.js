@@ -1,7 +1,7 @@
 import sidebarStyles from '../assets/css/Sidebar.module.css';
 import { Link } from "react-router-dom";
 
-export const Sidebar = ({ handle_tag_click, activeTag }) => {
+export const Sidebar = ({ handleTagClick, activeTag }) => {
   const TAGS = ['All', 'UI', 'UX', 'Enhancement', 'Bug', 'Feature'];
 
   return (
@@ -15,7 +15,7 @@ export const Sidebar = ({ handle_tag_click, activeTag }) => {
           <button
             key={tag}
             className={`btn tag ${tag === activeTag ? 'active_tag' : ''}`}
-            onClick={() => handle_tag_click(tag)}
+            onClick={() => handleTagClick(tag)}
           >
             {tag}
           </button>

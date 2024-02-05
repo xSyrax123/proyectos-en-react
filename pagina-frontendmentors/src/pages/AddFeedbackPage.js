@@ -1,9 +1,8 @@
 import modalStyles from "../assets/css/AddFeedback.module.css";
 import { Link, useNavigate } from "react-router-dom";
 
-export const AddFeedback = () => {
-  const navigate = useNavigate(); 
-  
+export const AddFeedback = ({ setSuggestionsData, handleTagClick }) => {
+  const navigate = useNavigate();   
   const handleAddFeedback = (e) => {
     e.preventDefault();
 
@@ -17,7 +16,10 @@ export const AddFeedback = () => {
       comments: []
     }
 
-    navigate('/')  
+    setSuggestionsData((prevSuggestions) => [...prevSuggestions, newSuggestion]);
+    handleTagClick("All");
+    
+    navigate('/');  
   }
 
   return (
@@ -69,12 +71,13 @@ export const AddFeedback = () => {
           <div className={modalStyles.fb_container}>
             <label>Feedback Title</label>
             <p>Add a short, descriptive headline</p>
-            <input type="text" name="title" />
+            <input type="text" name="title" required />
           </div>
           <div className={modalStyles.fb_container}>
             <label>Category</label>
             <p>Choose a category for your feedback</p>
-            <select name="category">
+            <select name="category" required>
+              <option></option>
               <option>Feature</option>
               <option>UI</option>
               <option>UX</option>
@@ -88,7 +91,7 @@ export const AddFeedback = () => {
               Include any specific comments on what should be improved, added,
               etc.
             </p>
-            <textarea name="description" className={modalStyles.fb_detail_input}></textarea>
+            <textarea name="description" required className={modalStyles.fb_detail_input}></textarea>
           </div>
           <div className={modalStyles.form_buttons}>
             <Link to="/" className="btn cancel">
