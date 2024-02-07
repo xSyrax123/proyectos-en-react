@@ -1,32 +1,57 @@
-import suggestionStyles from '../assets/css/Suggestions.module.css';
+import suggestionStyles from "../assets/css/Suggestions.module.css";
+import { useState } from "react";
 
-export const SuggestionCard = ({ suggestion }) => {
+export const SuggestionCard = ({ suggestion, setSuggestionsData }) => {
   const numComments = suggestion.comments ? suggestion.comments.length : 0;
-  const [title, description, category, upvotes] = [
+  let [title, description, category] = [
     suggestion.title,
     suggestion.description,
     suggestion.category,
-    suggestion.upvotes,
   ];
+  const [upvoted, setUpvoted] = useState(false);
+
+  const handleUpvote = () => {    
+    setUpvoted(!upvoted);
+
+    setSuggestionsData((prevSuggestions) => {      
+      const updatedSuggestions = [...prevSuggestions];
+
+      if (upvoted) {
+        updatedSuggestions[suggestion.id - 1].upvotes -= 1;
+      } else {
+        updatedSuggestions[suggestion.id - 1].upvotes += 1;
+      }
+
+      return updatedSuggestions;
+    });
+    console.log(upvoted)
+  };
 
   return (
     <article className={suggestionStyles.suggestion_card}>
       <div className={suggestionStyles.upvote_and_sugg_info_container}>
-        <button className={`btn ${suggestionStyles.upvote}`}>
+        <button
+          className={`btn ${suggestionStyles.upvote} ${
+            upvoted ? suggestionStyles.upvoted : ""
+          }`}
+          onClick={handleUpvote}
+        >
           <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
             <path
               d="M1 6l4-4 4 4"
-              stroke="#4661E6"
+              stroke={`${upvoted ? '#fff' : '#4661E6' }`}
               strokeWidth="2"
               fill="none"
               fillRule="evenodd"
             ></path>
           </svg>
-          <span className={suggestionStyles.number_upvotes}>{upvotes}</span>
+          <span className={suggestionStyles.number_upvotes}>{suggestion.upvotes}</span>
         </button>
         <div className={suggestionStyles.suggestion_info}>
           <h3 className={suggestionStyles.suggestion_title}>{title}</h3>
-          <p className={suggestionStyles.suggestion_description}>{description}</p>
+          <p className={suggestionStyles.suggestion_description}>
+            {description}
+          </p>
           <p className={`tag ${suggestionStyles.suggestion_category}`}>
             {category.charAt(0).toUpperCase() + category.slice(1)}
           </p>

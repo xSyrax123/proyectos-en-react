@@ -27,8 +27,21 @@
   align-items: center;
 }
 
+.upvote:hover {
+  background-color: #cfd7ff;
+}
+
 .number_upvotes {
   font-family: "Jost*", sans-serif;
+}
+
+.upvoted {
+  background-color: #4661E6;
+  color: #fff;
+}
+
+.upvoted:hover {
+  background-color: #4661E6;
 }
 
 .suggestion_info {
