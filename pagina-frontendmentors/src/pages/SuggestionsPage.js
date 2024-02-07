@@ -6,7 +6,8 @@ export const SuggestionsPage = ({
   activeTag,
   filteredSuggestions,
   handleSortChange,
-  handleTagClick
+  handleTagClick,
+  setSortType
 }) => {
   return (
     <>
@@ -14,6 +15,7 @@ export const SuggestionsPage = ({
       <div className="suggestions_container">
         <Header
           handleSortChange={handleSortChange}
+          setSortType={setSortType}
           suggestions={filteredSuggestions}
         />
         <SuggestionsList suggestions={filteredSuggestions} />
