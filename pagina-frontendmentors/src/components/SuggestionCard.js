@@ -19,7 +19,7 @@ export const SuggestionCard = ({ suggestion, setSuggestionsData }) => {
     // Cada vez que el estado de "upvoted" cambia, actualizamos el almacenamiento local
     localStorage.setItem(`upvoted-${suggestion.id}`, JSON.stringify(upvoted));
   }, [upvoted, suggestion.id]);
-
+  
   const handleUpvote = () => {    
     setUpvoted(!upvoted);
 
