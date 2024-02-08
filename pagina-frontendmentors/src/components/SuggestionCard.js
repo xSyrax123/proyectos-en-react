@@ -1,5 +1,5 @@
 import suggestionStyles from "../assets/css/Suggestions.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const SuggestionCard = ({ suggestion, setSuggestionsData }) => {
   const numComments = suggestion.comments ? suggestion.comments.length : 0;
@@ -8,7 +8,17 @@ export const SuggestionCard = ({ suggestion, setSuggestionsData }) => {
     suggestion.description,
     suggestion.category,
   ];
-  const [upvoted, setUpvoted] = useState(false);
+  const [upvoted, setUpvoted] = useState(() => {
+    // Al inicializar el estado, intentamos obtener el valor de "upvoted" del almacenamiento local
+    const storedUpvoted = localStorage.getItem(`upvoted-${suggestion.id}`);
+    // Convertimos el valor obtenido de cadena a booleano
+    return storedUpvoted ? JSON.parse(storedUpvoted) : false;
+  });
+
+  useEffect(() => {
+    // Cada vez que el estado de "upvoted" cambia, actualizamos el almacenamiento local
+    localStorage.setItem(`upvoted-${suggestion.id}`, JSON.stringify(upvoted));
+  }, [upvoted, suggestion.id]);
 
   const handleUpvote = () => {    
     setUpvoted(!upvoted);
