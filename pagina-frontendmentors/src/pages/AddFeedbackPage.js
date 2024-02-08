@@ -1,7 +1,7 @@
 import modalStyles from "../assets/css/AddFeedback.module.css";
 import { Link, useNavigate } from "react-router-dom";
 
-export const AddFeedback = ({ setSuggestionsData, handleTagClick }) => {
+export const AddFeedback = ({ suggestionsData, setSuggestionsData, handleTagClick }) => {
   const navigate = useNavigate();   
   const handleAddFeedback = (e) => {
     e.preventDefault();
@@ -10,7 +10,7 @@ export const AddFeedback = ({ setSuggestionsData, handleTagClick }) => {
     const formDataObject = Object.fromEntries(formData.entries());
     const newSuggestion = {
       ...formDataObject,
-      id: 0,
+      id: suggestionsData.at(-1).id + 1,
       upvotes: 0,
       status: "suggestion",
       comments: []

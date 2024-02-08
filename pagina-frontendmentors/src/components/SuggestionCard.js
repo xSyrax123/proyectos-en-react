@@ -34,7 +34,6 @@ export const SuggestionCard = ({ suggestion, setSuggestionsData }) => {
 
       return updatedSuggestions;
     });
-    console.log(upvoted)
   };
 
   return (

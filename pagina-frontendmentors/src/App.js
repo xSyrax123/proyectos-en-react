@@ -21,7 +21,6 @@ function App() {
   const loadSuggestionsData = () => {
     try {
       setSuggestionsData(data.productRequests);
-      console.log(suggestionsData)
     } catch (error) {
       console.error(`Error loading data: ${error}`);
     }
@@ -70,6 +69,7 @@ function App() {
             path="/add"
             element={
               <AddFeedback
+                suggestionsData={suggestionsData}
                 setSuggestionsData={setSuggestionsData}
                 handleTagClick={handleTagClick}
               />
