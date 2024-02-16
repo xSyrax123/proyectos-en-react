@@ -3,10 +3,15 @@
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
+  border: 1px solid transparent;
   border-radius: 10px;
   margin: 20px 0;
   padding: 28px;
   width: 100%;
+}
+
+.suggestion_card:hover {
+  border: 1px solid #ad1fea;
 }
 
 .upvote_and_sugg_info_container {
@@ -63,7 +68,13 @@
 }
 
 .suggestion_category {
-  margin-left: 0;
+  background-color: #f2f4ff;
+  border-radius: 10px;
+  color: #4661e6;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 8px 15px;
+  margin: 5px 7px;
 }
 
 .num_comments_container {

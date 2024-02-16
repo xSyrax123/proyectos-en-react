@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AddFeedback } from "./pages/AddFeedbackPage";
 import { SuggestionsPage } from "./pages/SuggestionsPage";
 import { RoadmapPage } from "./pages/RoadmapPage";
+import { SuggestionPage } from "./components/SuggestionPage";
 import "./assets/css/global.css";
 import data from "./data.json";
 
@@ -76,6 +77,7 @@ function App() {
             }
           />
           <Route path="/roadmap-page" element={<RoadmapPage />} />
+          <Route path="/suggestion/:id" element={<SuggestionPage suggestionsData={suggestionsData} />} />
         </Routes>
       </BrowserRouter>
     </div>
