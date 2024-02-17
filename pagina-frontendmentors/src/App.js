@@ -77,7 +77,7 @@ function App() {
             }
           />
           <Route path="/roadmap-page" element={<RoadmapPage />} />
-          <Route path="/suggestion/:id" element={<SuggestionPage suggestionsData={suggestionsData} />} />
+          <Route path="/suggestion/:id" element={<SuggestionPage suggestionsData={suggestionsData} setSuggestionsData={setSuggestionsData} />} />
         </Routes>
       </BrowserRouter>
     </div>

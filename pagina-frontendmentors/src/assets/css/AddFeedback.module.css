@@ -83,21 +83,3 @@ input:hover, select:hover, textarea:hover {
   top: 0;
   transform: translateY(-50%);
 }
-
-.go_back_link {
-  background-color: #f2f4ff;
-  border: none;
-  color: #647196;
-  cursor: pointer;  
-  font-size: 14px;
-  font-weight: bold;
-  outline: none;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.go_back_link:hover {
-  text-decoration: underline;
-}

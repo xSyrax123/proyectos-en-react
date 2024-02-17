@@ -1,0 +1,28 @@
+.sugg_details {
+  align-self: center;
+  justify-self: center;
+  gap: 24px;  
+  width: 100%;
+  min-height: 100vh;
+  max-width: 810px;
+  margin-left: 100px;
+}
+
+.top_bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  
+}
+
+.sugg_comments {    
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;  
+  padding: 24px 32px;  
+}
+
+.comment {
+    
+}

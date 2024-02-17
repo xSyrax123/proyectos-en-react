@@ -21,7 +21,10 @@ export const SuggestionCard = ({ suggestion, setSuggestionsData }) => {
     localStorage.setItem(`upvoted-${suggestion.id}`, JSON.stringify(upvoted));
   }, [upvoted, suggestion.id]);
   
-  const handleUpvote = () => {    
+  const handleUpvote = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+        
     const newUpvoted = !upvoted;
     setUpvoted(newUpvoted);
 
@@ -46,7 +49,7 @@ export const SuggestionCard = ({ suggestion, setSuggestionsData }) => {
             className={`btn ${suggestionStyles.upvote} ${
               upvoted ? suggestionStyles.upvoted : ""
             }`}
-            onClick={handleUpvote}
+            onClick={(e) => handleUpvote(e)}
           >
             <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
               <path

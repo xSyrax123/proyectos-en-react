@@ -25,7 +25,7 @@ export const AddFeedback = ({ suggestionsData, setSuggestionsData, handleTagClic
   return (
     <section className={modalStyles.modal_container}>
       <div className={modalStyles.modal_content}>
-        <Link className={modalStyles.go_back_link} to="/">
+        <Link className="go_back_link" to="/">
           <svg
             id="left-arrow"
             width="7"

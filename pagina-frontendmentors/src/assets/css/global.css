@@ -91,3 +91,36 @@ a {
 .cancel:hover {
   background-color: #6972af;
 }
+
+.edit_feedback {
+  background-color: #4661e6;
+  color: #f2f4ff;
+  font-size: 14px;
+  height: 44px;
+  padding: 0 25px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.edit_feedback:hover {
+  background-color: #7c91f9;
+}
+
+.go_back_link {
+  background-color: #f2f4ff;
+  border: none;
+  color: #647196;
+  cursor: pointer;  
+  font-size: 14px;
+  font-weight: bold;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.go_back_link:hover {
+  text-decoration: underline;
+}
