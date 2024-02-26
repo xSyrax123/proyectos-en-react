@@ -1,0 +1,41 @@
+h1 {
+  font-size: 24px;
+}
+
+.roadmap_page {
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  min-width: 1150px;
+  min-height: 100vh;
+  max-width: 810px;
+}
+
+header {
+  background-color: #373f68;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 32px;
+  height: 100px;
+  width: 100%;
+}
+
+.link_and_title  {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.roadmap_suggestions {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+}
+
+.roadmap_column {
+  flex-grow: 1;
+}

@@ -107,8 +107,23 @@ a {
   background-color: #7c91f9;
 }
 
+.post_comment {
+  background-color: #ad1fea;
+  color: #f2f4ff;
+  font-size: 14px;
+  height: 44px;
+  width: fit-content;
+  padding: 0 25px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.post_comment:hover {
+  background-color: #bc57e7;
+}
+
 .go_back_link {
-  background-color: #f2f4ff;
   border: none;
   color: #647196;
   cursor: pointer;  

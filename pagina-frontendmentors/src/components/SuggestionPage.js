@@ -21,20 +21,21 @@ export const SuggestionPage = ({ suggestionsData, setSuggestionsData }) => {
     // Convertimos el valor obtenido de cadena a booleano
     return storedUpvoted ? JSON.parse(storedUpvoted) : false;
   });
+  const [remainingChars, setRemainingChars] = useState(250);
 
   useEffect(() => {
     // Cada vez que el estado de "upvoted" cambia, actualizamos el almacenamiento local
     localStorage.setItem(`upvoted-${suggestion.id}`, JSON.stringify(upvoted));
   }, [upvoted, suggestion.id]);
-  
+
   const handleUpvote = (e) => {
     e.stopPropagation();
     e.preventDefault();
-        
+
     const newUpvoted = !upvoted;
     setUpvoted(newUpvoted);
 
-    setSuggestionsData((prevSuggestions) => {      
+    setSuggestionsData((prevSuggestions) => {
       const updatedSuggestions = [...prevSuggestions];
 
       if (newUpvoted) {
@@ -47,6 +48,12 @@ export const SuggestionPage = ({ suggestionsData, setSuggestionsData }) => {
     });
   };
 
+  const updateRemainingChars = (e) => {
+    const length = e.target.value.length;
+    const newRemainingChars = 250 - length;
+    
+    setRemainingChars(newRemainingChars);
+  }
 
   return (
     <div className={suggestionDetailsStyles.sugg_details}>
@@ -116,19 +123,70 @@ export const SuggestionPage = ({ suggestionsData, setSuggestionsData }) => {
       </article>
       <div className={suggestionDetailsStyles.sugg_comments}>
         <h3>{numComments} Comments</h3>
-        {suggestion.comments &&
-          suggestion.comments.map((comment, index) => (
-            <div key={index} className={suggestionDetailsStyles.comment}>
+        {suggestion.comments.map((comment, index) => (
+          <div key={index} className={suggestionDetailsStyles.comment}>
+            <div className={suggestionDetailsStyles.comment_info}>
               <img src={comment.user.image} alt="User avatar" />
-              <div>
-                <h4>{comment.name}</h4>
-                <p>@{comment.user.username}</p>
-                <p>{comment.content}</p>
-                <button>Reply</button>
+              <div className={suggestionDetailsStyles.user_info}>
+                <p className={suggestionDetailsStyles.author_name}>
+                  {comment.user.name}
+                </p>
+                <p className={suggestionDetailsStyles.author_username}>
+                  @{comment.user.username}
+                </p>
               </div>
+              <button
+                className={`btn ${suggestionDetailsStyles.reply}`}
+                type="buton"
+              >
+                Reply
+              </button>
             </div>
-          ))}
+            <p className={suggestionDetailsStyles.comment_text}>
+              {comment.content}
+            </p>
+            {comment.hasOwnProperty("replies") ? (
+              <div className={suggestionDetailsStyles.replies_container}>
+                {comment.replies.map((reply, replyIndex) => (
+                  <div
+                    key={replyIndex}
+                    className={suggestionDetailsStyles.comment}
+                  >
+                    <div className={suggestionDetailsStyles.comment_info}>
+                      <img src={reply.user.image} alt="User avatar" />
+                      <div className={suggestionDetailsStyles.user_info}>
+                        <p className={suggestionDetailsStyles.author_name}>
+                          {reply.user.name}
+                        </p>
+                        <p className={suggestionDetailsStyles.author_username}>
+                          @{reply.user.username}
+                        </p>
+                      </div>
+                      <button
+                        className={`btn ${suggestionDetailsStyles.reply}`}
+                        type="buton"
+                      >
+                        Reply
+                      </button>
+                    </div>
+                    <p className={suggestionDetailsStyles.comment_text}>{reply.content}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
+        ))}
       </div>
+      <form id="add-comment">
+        <h3>Add comment</h3>
+        <textarea placeholder="Type your comment here" maxLength="250" onChange={(e) => updateRemainingChars(e)}></textarea>
+        <div className={suggestionDetailsStyles.chars_left_and_submit}>
+          <p>{remainingChars} characters left</p>
+          <button type="submit" className="btn post_comment">Post Comment</button>    
+        </div>
+      </form>
     </div>
   );
 };

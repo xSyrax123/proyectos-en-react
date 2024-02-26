@@ -1,7 +1,7 @@
 import headerStyles from "../assets/css/Header.module.css";
 import { Link } from "react-router-dom";
 
-export const Header = ({ handleSortChange, suggestions, setSortType }) => {
+export const Header = ({ handleSortChange, suggestions }) => {
   return (
     <header>
       <div className={headerStyles.number_suggestions_and_sort}>

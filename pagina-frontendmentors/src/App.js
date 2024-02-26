@@ -40,7 +40,7 @@ function App() {
     return (
       activeTag === "All" || suggestion.category.toLowerCase() === activeTag.toLowerCase()
     );
-  }).sort(sortFunction);
+  });
   const filteredCopy = [...filteredSuggestions];
   const sortedSuggestions = filteredCopy.sort(sortFunction);
   filteredSuggestions = sortedSuggestions;
@@ -61,7 +61,6 @@ function App() {
                 filteredSuggestions={filteredSuggestions}
                 handleSortChange={handleSortChange}
                 handleTagClick={handleTagClick}
-                setSortType={setSortType}
                 setSuggestionsData={setSuggestionsData}
               />
             }
@@ -76,8 +75,8 @@ function App() {
               />
             }
           />
-          <Route path="/roadmap-page" element={<RoadmapPage />} />
-          <Route path="/suggestion/:id" element={<SuggestionPage suggestionsData={suggestionsData} setSuggestionsData={setSuggestionsData} />} />
+          <Route path="/roadmap-page" element={<RoadmapPage />} suggestionsData={suggestionsData} />
+          <Route path="/suggestion/:id" element={<SuggestionPage suggestions={suggestionsData} setSuggestionsData={setSuggestionsData} />} />
         </Routes>
       </BrowserRouter>
     </div>

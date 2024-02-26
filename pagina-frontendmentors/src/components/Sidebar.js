@@ -24,7 +24,7 @@ export const Sidebar = ({ handleTagClick, activeTag }) => {
       <div className={sidebarStyles.roadmap_container}>
         <div className={sidebarStyles.roadmap_title_and_link}>
           <h2 className={sidebarStyles.roadmap_title}>Roadmap</h2>
-          <Link to="/" className={sidebarStyles.roadmap_link}>View</Link>
+          <Link to="/roadmap-page" className={sidebarStyles.roadmap_link}>View</Link>
         </div>
         <ul className={sidebarStyles.roadmap_list}>
           <li className={`${sidebarStyles.roadmap_li} ${sidebarStyles.planned_dot}`}>Planned <span>2</span></li>
